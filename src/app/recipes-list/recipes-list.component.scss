@@ -63,6 +63,7 @@
   .recipe-grid-item {
     margin: .5em;
     border: 1px solid #dee2e6;
+    width: 20%;
 
     .recipe-grid-item-top,
     .recipe-grid-item-bottom {
@@ -79,6 +80,8 @@
 
     .recipe-grid-item-content {
       text-align: center;
+      overflow: hidden;
+
     }
 
     .recipe-prep-time {
@@ -96,7 +99,7 @@
 }
 
 @media screen and (max-width: 576px) {
-  :host ::ng-deep .recipe-list-item {
+  :host  .recipe-list-item {
     flex-direction: column;
     align-items: center;
 
