@@ -8,10 +8,9 @@ import {environment} from "../../../environments/environment";
   providedIn: 'root'
 })
 export class RecipesService {
-  BASE_PATH=environment.basePath
+  BASE_PATH=environment.basePath;
+  recipes$:Observable<Recipe[]> = this.http.get<Recipe[]>(`${this.BASE_PATH}/recipes`)
   constructor(private http:HttpClient) { }
 
-  getRecipes():Observable<Recipe[]>{
-    return this.http.get<Recipe[]>(`${this.BASE_PATH}/recipes`)
-  }
+
 }
