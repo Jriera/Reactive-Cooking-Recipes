@@ -1,7 +1,7 @@
 
-<div class="d-flex flex-row justify-content-start flex-wrap pt-5 gap-3 ps-5">
-  <ng-container *ngFor="let recipe of recipes">
-    <div class="d-flex flex-column">
+<div class="d-flex flex-row justify-content-evenly flex-wrap pt-5 gap-3  container">
+  <ng-container *ngFor="let recipe of (recipes | async)">
+    <div class="d-flex flex-column card">
 
 
     <div>
