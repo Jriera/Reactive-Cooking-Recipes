@@ -11,7 +11,7 @@ import {DataViewModule} from "primeng/dataview";
 import {PaginatorModule} from "primeng/paginator";
 import {RatingModule} from "primeng/rating";
 import {ButtonModule} from "primeng/button";
-import { RecipoesFilterComponent } from './recipoes-filter/recipoes-filter.component';
+import { RecipesFilterComponent } from './recipes-filter/recipes-filter.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
@@ -20,7 +20,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     HeaderComponent,
     HomeComponent,
     RecipesListComponent,
-    RecipoesFilterComponent
+    RecipesFilterComponent
   ],
     imports: [
         BrowserModule,
