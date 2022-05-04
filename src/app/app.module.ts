@@ -11,23 +11,27 @@ import {DataViewModule} from "primeng/dataview";
 import {PaginatorModule} from "primeng/paginator";
 import {RatingModule} from "primeng/rating";
 import {ButtonModule} from "primeng/button";
+import { RecipoesFilterComponent } from './recipoes-filter/recipoes-filter.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    RecipesListComponent
+    RecipesListComponent,
+    RecipoesFilterComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    DataViewModule,
-    HttpClientModule,
-    PaginatorModule,
-    RatingModule,
-    ButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        DataViewModule,
+        HttpClientModule,
+        PaginatorModule,
+        RatingModule,
+        ButtonModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
