@@ -1,28 +1,44 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Recipe} from "../core/model/recipe.model";
 import {RecipesService} from "../core/services/recipes.service";
-import {Observable} from "rxjs";
+import {Observable, Subject, takeUntil} from "rxjs";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-recipes-list',
   templateUrl: './recipes-list.component.html',
   styleUrls: ['./recipes-list.component.scss'],
-  changeDetection:ChangeDetectionStrategy.OnPush
+
 })
-/*Since we are using async pipe with observable we can leverage the advantages of the OnPush change detection
-* saving unnecessary change detection iterations unless the observable stream changes*/
+export class RecipesListComponent implements OnInit, OnDestroy {
+  @Input() titleFilter!: string;
+  filteredRecipes: Recipe[] = [];
+  recipes: Recipe[] = [];
+  private destroy$: Subject<boolean> = new
+  Subject<boolean>();
 
-export class RecipesListComponent implements OnInit{
-  recipes!:Observable<Recipe[]>;
-
-
-  constructor(private service:RecipesService ) { }
-
-  ngOnInit(): void {
-    this.recipes=this.service.recipes$
-
+  constructor(private service: RecipesService, private fb:
+    FormBuilder) {
   }
 
+  ngOnInit(): void {
+    this.service.recipes$.pipe(takeUntil(this.destroy$))
+      .subscribe((recipes) => {
+        this.recipes = recipes;
+        this.filteredRecipes = recipes;
+      });
+  }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
+  filterResults() {
+    if (this.titleFilter) {
+      this.filteredRecipes = this.recipes.filter(recipe =>
+        recipe.title?.indexOf(this.titleFilter) !=
+        -1)
+    }
+  }
 }
