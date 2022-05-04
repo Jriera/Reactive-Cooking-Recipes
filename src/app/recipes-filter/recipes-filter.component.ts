@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 
 @Component({
-  selector: 'app-recipoes-filter',
-  templateUrl: './recipoes-filter.component.html',
-  styleUrls: ['./recipoes-filter.component.scss']
+  selector: 'app-recipes-filter',
+  templateUrl: './recipes-filter.component.html',
+  styleUrls: ['./recipes-filter.component.scss']
 })
-export class RecipoesFilterComponent implements OnInit {
+export class RecipesFilterComponent implements OnInit {
 
 
 
